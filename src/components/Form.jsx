@@ -2,15 +2,25 @@ import { useState } from "react";
 
 //Variables de estado
 
-function Form() {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [buy, setBuy] = useState("");
-  const [reviews, setReviews] = useState("");
-  const [hashtags, setHashtags] = useState("");
-  const [synopsis, setSynopsis] = useState("");
-  const [otherBooks, setOtherBooks] = useState("");
-  const [nacionality, setNacionality] = useState("");
+function Form(props) {
+  const {
+    title,
+    setTitle,
+    author,
+    setAuthor,
+    buy,
+    setBuy,
+    reviews,
+    setReviews,
+    hashtags,
+    setHashtags,
+    synopsis,
+    setSynopsis,
+    otherBooks,
+    setOtherBooks,
+    nacionality,
+    setNacionality,
+  } = props;
 
   //Funciones manejadoras
 
@@ -27,23 +37,23 @@ function Form() {
   };
 
   const handleReviews = (e) => {
-    setReviews (e.target.value);
+    setReviews(e.target.value);
   };
 
   const handleHashtags = (e) => {
-    setHashtags (e.target.value);
+    setHashtags(e.target.value);
   };
 
   const handleSynopsis = (e) => {
-    setSynopsis (e.target.value);
+    setSynopsis(e.target.value);
   };
 
   const handleOtherBooks = (e) => {
-    setOtherBooks (e.target.value);
+    setOtherBooks(e.target.value);
   };
 
   const handleNacionality = (e) => {
-    setNacionality (e.target.value);
+    setNacionality(e.target.value);
   };
 
   return (

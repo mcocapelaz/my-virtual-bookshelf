@@ -3,12 +3,15 @@ import { useState } from "react";
 import Form from "../components/Form";
 
 function App() {
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [buy, setBuy] = useState("");
+  const [reviews, setReviews] = useState("");
+  const [hashtags, setHashtags] = useState("");
+  const [synopsis, setSynopsis] = useState("");
+  const [otherBooks, setOtherBooks] = useState("");
+  const [nacionality, setNacionality] = useState("");
 
-
-
-
-
-  
   return (
     <div className="container">
       <header className="header">
@@ -54,7 +57,7 @@ function App() {
             </div>
 
             <div className="card__project">
-              <h3 className="card__name">Elegant Workspace</h3>
+              <h3 className="card__name">{title || "Elegant Workspace"}</h3>
               <p className="card__slogan">Diseños Exclusivos</p>
               <h3 className="card__descriptionTitle">Product description</h3>
               <p className="card__description">
@@ -85,7 +88,24 @@ function App() {
           </article>
         </section>
 
-        <Form />
+        <Form
+          title={title}
+          setTitle={setTitle}
+          author={author}
+          setAuthor={setAuthor}
+          buy={buy}
+          setBuy={setBuy}
+          reviews={reviews}
+          setReviews={setReviews}
+          hashtags={hashtags}
+          setHashtags={setHashtags}
+          synopsis={synopsis}
+          setSynopsis={setSynopsis}
+          otherBooks={otherBooks}
+          setOtherBooks={setOtherBooks}
+          nacionality={nacionality}
+          setNacionality={setNacionality}
+        />
       </main>
 
       <footer className="footer">
