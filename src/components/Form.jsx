@@ -1,7 +1,3 @@
-import { useState } from "react";
-
-//Variables de estado
-
 function Form(props) {
   const {
     title,

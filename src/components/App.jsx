@@ -1,7 +1,8 @@
 import "../styles/App.scss";
 import { useState } from "react";
 import Form from "../components/Form";
-import logo from "../images/logo.jpg";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function App() {
   const [title, setTitle] = useState("");
@@ -15,25 +16,7 @@ function App() {
 
   return (
     <div className="container">
-      <header className="header">
-        <a
-          className="header__brand"
-          href="./"
-          title="Haz click para volver a la página inicial"
-        >
-          <img
-            className="header__companyLogo"
-            src="./images/laptop-code-solid.svg"
-            alt="Logo proyectos molones"
-          />
-          <h1 className="header__title">My Virtual Bookshelf</h1>
-        </a>
-        <img
-          className="logoSponsor"
-          src="./images/adalab.png"
-          alt="Logo Adalab"
-        />
-      </header>
+      <Header />
 
       <main className="main">
         <section className="hero">
@@ -71,9 +54,10 @@ function App() {
               </p>
 
               <div className="card__bookInfo">
-                {otherBooks ||
-                  "Other books: The Blind Assassin, Oryx and Crake"}
-                <p className="card__review">{genre || "Genre: Dystopian"}</p>
+                {`Other books: ${otherBooks || "Other books:"}`}
+                <p className="card__review">{`Genre: ${
+                  genre || "Genre: Dystopian"
+                }`}</p>
               </div>
             </div>
           </article>
@@ -98,10 +82,7 @@ function App() {
           setNacionality={setNacionality}
         />
       </main>
-
-      <footer className="footer">
-        <img className="logoSponsor" src={logo} alt="My bookshelf logo" />
-      </footer>
+      <Footer />
     </div>
   );
 }
