@@ -1,13 +1,14 @@
 import "../styles/App.scss";
 import { useState } from "react";
 import Form from "../components/Form";
+import logo from "../images/logo.jpg";
 
 function App() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [buy, setBuy] = useState("");
+  const [editorial, setEditorial] = useState("");
   const [reviews, setReviews] = useState("");
-  const [hashtags, setHashtags] = useState("");
+  const [genre, setGenre] = useState("");
   const [synopsis, setSynopsis] = useState("");
   const [otherBooks, setOtherBooks] = useState("");
   const [nacionality, setNacionality] = useState("");
@@ -36,8 +37,8 @@ function App() {
 
       <main className="main">
         <section className="hero">
-          <h2 className="title">My bookshelf</h2>
-          <p className="hero__text">My Virtual Bookshelf</p>
+          <h2 className="title">My Virtual Bookshelf</h2>
+          <p className="hero__text">Your favorite reads, all in one place</p>
           <a className="button--link" href="./">
             See books
           </a>
@@ -52,37 +53,27 @@ function App() {
 
             <div className="card__author">
               <div className="card__authorPhoto"></div>
-              <p className="card__job">Full stack Developer</p>
-              <h3 className="card__name">Emmelie Bjôrklund</h3>
+              <p className="card__nacionality">{nacionality || "Canadian"}</p>
+              <h3 className="card__name">{author || "Margaret Atwood"}</h3>
             </div>
 
             <div className="card__project">
-              <h3 className="card__name">{title || "Elegant Workspace"}</h3>
-              <p className="card__slogan">Diseños Exclusivos</p>
-              <h3 className="card__descriptionTitle">Product description</h3>
+              <h3 className="card__name">{title || "The Handmaid's Tale"}</h3>
+              <h3 className="card__review">
+                {reviews || "Review: Unexpected, horrifying and convincing"}
+              </h3>
               <p className="card__description">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
-                quos? Itaque, molestias eveniet laudantium adipisci vitae
-                ratione
+                {synopsis ||
+                  "Synopsis: The narrator, the eponymous handmaid, is assigned to the household of a childless Commander and his wife. Her life becomes one of prescribed routine."}
+              </p>
+              <p className="card__bookInfo">
+                {editorial || "Editorial: Salamandra"}
               </p>
 
-              <div className="card__technicalInfo">
-                <p className="card__technologies">React JS - HTML - CSS</p>
-
-                <a
-                  className="icon icon__www"
-                  href="#"
-                  title="Click to see the book information"
-                >
-                  Web link
-                </a>
-                <a
-                  className="icon icon__github"
-                  href="#"
-                  title="Click to see the review"
-                >
-                  GitHub link
-                </a>
+              <div className="card__bookInfo">
+                {otherBooks ||
+                  "Other books: The Blind Assassin, Oryx and Crake"}
+                <p className="card__review">{genre || "Genre: Dystopian"}</p>
               </div>
             </div>
           </article>
@@ -93,12 +84,12 @@ function App() {
           setTitle={setTitle}
           author={author}
           setAuthor={setAuthor}
-          buy={buy}
-          setBuy={setBuy}
+          editorial={editorial}
+          setEditorial={setEditorial}
           reviews={reviews}
           setReviews={setReviews}
-          hashtags={hashtags}
-          setHashtags={setHashtags}
+          genre={genre}
+          setGenre={setGenre}
           synopsis={synopsis}
           setSynopsis={setSynopsis}
           otherBooks={otherBooks}
@@ -109,7 +100,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <img className="logoSponsor" src="./images/adalab.png" alt="My logo" />
+        <img className="logoSponsor" src={logo} alt="My bookshelf logo" />
       </footer>
     </div>
   );

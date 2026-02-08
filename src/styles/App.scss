@@ -8,7 +8,6 @@ fieldset {
 }
 
 :root {
-
   /* COLORS */
 
   --color-black: #000000;
@@ -23,25 +22,21 @@ fieldset {
   --color-dark-lilac: #8176af;
   --color-white-50: rgba(255, 255, 255, 0.5);
 
-
   /* FONTS */
 
-  --font-title-brand: 300 1.4rem 'Poppins', sans-serif;
-  --font-title-biggest: bold 3rem 'Montserrat', sans-serif;
-  --font-title-big: bold 2rem 'Montserrat', sans-serif;
-  --font-title-medium: 300 1.5rem 'Montserrat', sans-serif;
-  --font-text-big: normal 1.2rem 'Montserrat', sans-serif;
-  --font-normal: normal 10px 'Montserrat', sans-serif;
-  --font-button: bold 1rem 'Montserrat', sans-serif;
-  --font-card-text: 300 .8rem 'Poppins', sans-serif;
-  --font-card-section: 300 .8rem 'Poppins', sans-serif;
-  --font-card-title: 500 1.2rem 'Poppins', sans-serif;
-  --font-card-subtitle: 400 1.1rem 'Poppins', sans-serif;
-  --font-card-tech: 500 1rem 'Catamaran', sans-serif;
+  --font-title-brand: 300 1.4rem "Poppins", sans-serif;
+  --font-title-biggest: bold 3rem "Montserrat", sans-serif;
+  --font-title-big: bold 2rem "Montserrat", sans-serif;
+  --font-title-medium: 300 1.5rem "Montserrat", sans-serif;
+  --font-text-big: normal 1.2rem "Montserrat", sans-serif;
+  --font-normal: normal 10px "Montserrat", sans-serif;
+  --font-button: bold 1rem "Montserrat", sans-serif;
+  --font-card-text: 300 0.8rem "Poppins", sans-serif;
+  --font-card-section: 300 0.8rem "Poppins", sans-serif;
+  --font-card-title: 500 1.2rem "Poppins", sans-serif;
+  --font-card-subtitle: 400 1.1rem "Poppins", sans-serif;
+  --font-card-tech: 500 1rem "Catamaran", sans-serif;
 }
-
-
-
 
 :root {
   font: var(--font-normal); /* font-size: 10px; */
@@ -64,7 +59,6 @@ fieldset {
   padding: 22px 22px 0 22px;
   background-color: var(--color-dark);
 }
-
 
 .header {
   display: flex;
@@ -101,7 +95,6 @@ fieldset {
   }
 }
 
-
 .hero {
   margin-bottom: 3rem;
 }
@@ -124,13 +117,12 @@ fieldset {
   margin-bottom: 1.8rem;
 }
 
-
 .preview .projectImage {
   width: 100%;
   aspect-ratio: 1 / 1;
   outline: solid 1px pink;
 
-  background-image: url('../images/ebook-example.jpg');
+  background-image: url("../images/ebook-example.jpg");
   background-position: top center;
   background-size: cover;
 }
@@ -153,9 +145,18 @@ fieldset {
   backdrop-filter: blur(10px);
   border-style: solid;
   border-width: 1px;
-  border-image-source: linear-gradient(to bottom, var(--color-white) 0%, rgba(0, 0, 0, 0));
+  border-image-source: linear-gradient(
+    to bottom,
+    var(--color-white) 0%,
+    rgba(0, 0, 0, 0)
+  );
   border-image-slice: 1;
-  background-image: linear-gradient(to bottom, var(--color-white), var(--color-white)), linear-gradient(to bottom, var(--color-white) 0%, rgba(0, 0, 0, 0));
+  background-image: linear-gradient(
+      to bottom,
+      var(--color-white),
+      var(--color-white)
+    ),
+    linear-gradient(to bottom, var(--color-white) 0%, rgba(0, 0, 0, 0));
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -171,15 +172,22 @@ fieldset {
 }
 
 .card .card__projectTitle::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: calc( 50% - 1px );
-  bottom: calc( 50% - 1px );
+  top: calc(50% - 1px);
+  bottom: calc(50% - 1px);
   left: 0;
   right: 0;
   z-index: 0;
 
-  background-image: linear-gradient(to right, white, #232323 15%, var(--color-black), #232323 85%, white);
+  background-image: linear-gradient(
+    to right,
+    white,
+    #232323 15%,
+    var(--color-black),
+    #232323 85%,
+    white
+  );
 }
 
 .card .card__projectTitle--text {
@@ -200,49 +208,47 @@ fieldset {
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  background-image: url('../images/avatar.webp');
+  background-image: url("../images/avatar.webp");
   background-position: center;
   background-size: cover;
   margin-bottom: 0.8rem;
 }
 
-.card .card__job {
+.card .card__nacionality {
   margin-bottom: 0.2rem;
 }
 
 .card .card__name {
   font: var(--font-card-title);
-  margin-bottom: .2rem;
+  margin-bottom: 0.2rem;
 }
 
 .card .card__project {
   margin-right: 10px;
 }
 
-.card .card__slogan {
+.card .card__editorial {
   font: var(--font-card-subtitle);
-  margin-top: -.2rem;
-  margin-bottom: .8rem;
+  margin-top: -0.2rem;
+  margin-bottom: 0.8rem;
 }
 
-.card .card__descriptionTitle {
+.card .card__review {
   font-weight: inherit;
   text-transform: capitalize;
 }
 
-.card .card__technicalInfo {
+.card .card__bookInfo {
   display: grid;
   grid-template-columns: 1fr 2rem 2rem;
-  gap: .5em;
+  gap: 0.5em;
 
   margin-block: 1.8rem;
 }
 
-.card .card__technologies {
+.card .card__genre {
   font: var(--font-card-tech);
 }
-
-
 
 /* FORM */
 
@@ -251,7 +257,11 @@ fieldset {
 
   box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.25);
   border: solid 1px rgba(0, 0, 0, 0);
-  background-image: radial-gradient(circle at 50% 50%, var(--color-dusk), #211e2e 92%);
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    var(--color-dusk),
+    #211e2e 92%
+  );
 }
 
 .addForm .title {
@@ -265,21 +275,31 @@ fieldset {
   padding-block: 0.4rem;
   margin-block: 0.5rem;
   border: solid 2px transparent;
-  
 
   font: var(--font-title-medium);
   text-align: center;
 }
 
 .addForm .addForm__title:before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 100%; right: 0; bottom: 0; left: 0;
+  top: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
   margin-bottom: -2px;
   border-radius: inherit;
   background-color: transparent;
-  background-image: linear-gradient(to left, transparent, #343045 25%, #c0b7e8 45%, var(--color-dark-lilac) 65%, #343045 75%, transparent );
+  background-image: linear-gradient(
+    to left,
+    transparent,
+    #343045 25%,
+    #c0b7e8 45%,
+    var(--color-dark-lilac) 65%,
+    #343045 75%,
+    transparent
+  );
 }
 
 .addForm .addForm__group {
@@ -288,7 +308,7 @@ fieldset {
 
 .addForm .addForm__input {
   display: block;
-  width: calc( 100% - 20px );
+  width: calc(100% - 20px);
   margin: 10px auto;
 
   padding: 8.5px 16px 8.5px 16px;
@@ -317,14 +337,14 @@ fieldset {
 }
 
 .addForm .addForm__2col {
-  width: calc( 100% - 20px );
+  width: calc(100% - 20px);
   margin: 10px auto;
   display: flex;
   justify-content: space-between;
 }
 
 .addForm .addForm__2col .addForm__input {
-  width: calc( (100% - .2rem) / 2 );
+  width: calc((100% - 0.2rem) / 2);
   margin: 0;
 }
 
@@ -333,8 +353,6 @@ fieldset {
   justify-content: center;
   padding: 19px;
 }
-
-
 
 /* COMPONENTS */
 
@@ -388,7 +406,11 @@ fieldset {
   text-align: center;
 
   border-radius: 40px;
-  background-image: linear-gradient(to right, var(--color-dark-lilac) -2%, #c0b7e8 98%);
+  background-image: linear-gradient(
+    to right,
+    var(--color-dark-lilac) -2%,
+    #c0b7e8 98%
+  );
 
   cursor: pointer;
 }
@@ -408,7 +430,11 @@ fieldset {
 
   border-radius: 40px;
   background-color: transparent;
-  background-image: linear-gradient(to right, var(--color-dark-lilac) -2%, #c0b7e8 98%);
+  background-image: linear-gradient(
+    to right,
+    var(--color-dark-lilac) -2%,
+    #c0b7e8 98%
+  );
 
   cursor: pointer;
 }
@@ -429,9 +455,9 @@ fieldset {
 }
 
 .icon__www {
-  background-image: url('../images/icons/globe-solid.svg');
+  background-image: url("../images/icons/globe-solid.svg");
 }
 
 .icon__github {
-  background-image: url('../images/icons/github.svg');
+  background-image: url("../images/icons/github.svg");
 }

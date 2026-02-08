@@ -8,12 +8,12 @@ function Form(props) {
     setTitle,
     author,
     setAuthor,
-    buy,
-    setBuy,
+    editorial,
+    setEditorial,
     reviews,
     setReviews,
-    hashtags,
-    setHashtags,
+    genre,
+    setGenre,
     synopsis,
     setSynopsis,
     otherBooks,
@@ -32,16 +32,16 @@ function Form(props) {
     setAuthor(e.target.value);
   };
 
-  const handleBuy = (e) => {
-    setBuy(e.target.value);
+  const handleEditorial = (e) => {
+    setEditorial(e.target.value);
   };
 
   const handleReviews = (e) => {
     setReviews(e.target.value);
   };
 
-  const handleHashtags = (e) => {
-    setHashtags(e.target.value);
+  const handleGenre = (e) => {
+    setGenre(e.target.value);
   };
 
   const handleSynopsis = (e) => {
@@ -58,9 +58,9 @@ function Form(props) {
 
   return (
     <form className="addForm">
-      <h2 className="title">Información</h2>
+      <h2 className="title">Information</h2>
       <fieldset className="addForm__group">
-        <legend className="addForm__title">Cuéntanos sobre el proyecto</legend>
+        <legend className="addForm__title">Your Virtual Bookshelf</legend>
         <input
           className="addForm__input"
           type="text"
@@ -83,18 +83,18 @@ function Form(props) {
           <input
             className="addForm__input"
             type="url"
-            name="buy"
-            id="buy"
-            placeholder="Buy it"
-            value={buy}
-            onChange={handleBuy}
+            name="editorial"
+            id="editorial"
+            placeholder="Editorial"
+            value={editorial}
+            onChange={handleEditorial}
           />
           <input
             className="addForm__input"
-            type="url"
-            name="goodread"
-            id="goodread"
-            placeholder="Goodread reviews"
+            type="text"
+            name="review"
+            id="review"
+            placeholder="Book review"
             value={reviews}
             onChange={handleReviews}
           />
@@ -102,11 +102,11 @@ function Form(props) {
         <input
           className="addForm__input"
           type="text"
-          name="hashtag"
-          id="hashtag"
-          placeholder="Hashtags"
-          value={hashtags}
-          onChange={handleHashtags}
+          name="genre"
+          id="genre"
+          placeholder="Genre"
+          value={genre}
+          onChange={handleGenre}
         />
         <textarea
           className="addForm__input"
