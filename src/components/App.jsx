@@ -6,14 +6,16 @@ import Footer from "../components/Footer";
 import Preview from "../components/Preview";
 
 function App() {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [editorial, setEditorial] = useState("");
-  const [reviews, setReviews] = useState("");
-  const [genre, setGenre] = useState("");
-  const [synopsis, setSynopsis] = useState("");
-  const [otherBooks, setOtherBooks] = useState("");
-  const [nacionality, setNacionality] = useState("");
+  const [bookData, setBookData] = useState({
+    title: "",
+    author: "",
+    editorial: "",
+    reviews: "",
+    genre: "",
+    synopsis: "",
+    otherBooks: "",
+    nacionality: "",
+  });
 
   return (
     <div className="container">
@@ -28,35 +30,9 @@ function App() {
           </a>
         </section>
 
-        <Preview
-          title={title}
-          author={author}
-          editorial={editorial}
-          reviews={reviews}
-          genre={genre}
-          synopsis={synopsis}
-          otherBooks={otherBooks}
-          nacionality={nacionality}
-        />
+        <Preview bookData={bookData} />
 
-        <Form
-          title={title}
-          setTitle={setTitle}
-          author={author}
-          setAuthor={setAuthor}
-          editorial={editorial}
-          setEditorial={setEditorial}
-          reviews={reviews}
-          setReviews={setReviews}
-          genre={genre}
-          setGenre={setGenre}
-          synopsis={synopsis}
-          setSynopsis={setSynopsis}
-          otherBooks={otherBooks}
-          setOtherBooks={setOtherBooks}
-          nacionality={nacionality}
-          setNacionality={setNacionality}
-        />
+        <Form bookData={bookData} setBookData={setBookData} />
       </main>
       <Footer />
     </div>

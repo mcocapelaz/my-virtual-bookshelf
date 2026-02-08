@@ -1,14 +1,5 @@
 function Preview(props) {
-  const {
-    title,
-    author,
-    editorial,
-    reviews,
-    genre,
-    synopsis,
-    otherBooks,
-    nacionality,
-  } = props;
+  const { bookData } = props;
 
   return (
     <section className="preview">
@@ -20,27 +11,32 @@ function Preview(props) {
 
         <div className="card__author">
           <div className="card__authorPhoto"></div>
-          <p className="card__nacionality">{nacionality || "Canadian"}</p>
-          <h3 className="card__name">{author || "Margaret Atwood"}</h3>
+          <p className="card__nacionality">
+            {bookData.nacionality || "Canadian"}
+          </p>
+          <h3 className="card__name">{bookData.author || "Margaret Atwood"}</h3>
         </div>
 
         <div className="card__project">
-          <h3 className="card__name">{title || "The Handmaid's Tale"}</h3>
+          <h3 className="card__name">
+            {bookData.title || "The Handmaid's Tale"}
+          </h3>
           <h3 className="card__review">
-            {reviews || "Review: Unexpected, horrifying and convincing"}
+            {bookData.reviews ||
+              "Review: Unexpected, horrifying and convincing"}
           </h3>
           <p className="card__description">
-            {synopsis ||
+            {bookData.synopsis ||
               "Synopsis: The narrator, the eponymous handmaid, is assigned to the household of a childless Commander and his wife. Her life becomes one of prescribed routine."}
           </p>
           <p className="card__bookInfo">
-            {editorial || "Editorial: Salamandra"}
+            {bookData.editorial || "Editorial: Salamandra"}
           </p>
 
           <div className="card__bookInfo">
-            {`Other books: ${otherBooks || "Oryx and Crake"}`}
+            {`Other books: ${bookData.otherBooks || "Oryx and Crake"}`}
             <p className="card__review">{`Genre: ${
-              genre || "Dystopian"
+              bookData.genre || "Dystopian"
             }`}</p>
           </div>
         </div>

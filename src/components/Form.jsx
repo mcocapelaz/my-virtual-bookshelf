@@ -1,55 +1,38 @@
 function Form(props) {
-  const {
-    title,
-    setTitle,
-    author,
-    setAuthor,
-    editorial,
-    setEditorial,
-    reviews,
-    setReviews,
-    genre,
-    setGenre,
-    synopsis,
-    setSynopsis,
-    otherBooks,
-    setOtherBooks,
-    nacionality,
-    setNacionality,
-  } = props;
+  const {bookData, setBookData} = props;
 
   //Funciones manejadoras
 
   const handleTitle = (e) => {
-    setTitle(e.target.value);
+setBookData ({...bookData, title: e.target.value}); 
   };
 
-  const handleAuthor = (e) => {
-    setAuthor(e.target.value);
+ const handleAuthor = (e) => {
+    setBookData({...bookData, author: e.target.value});
   };
 
   const handleEditorial = (e) => {
-    setEditorial(e.target.value);
+    setBookData({...bookData, editorial: e.target.value});
   };
 
   const handleReviews = (e) => {
-    setReviews(e.target.value);
+    setBookData({...bookData, reviews: e.target.value});
   };
 
   const handleGenre = (e) => {
-    setGenre(e.target.value);
+    setBookData({...bookData, genre: e.target.value});
   };
 
   const handleSynopsis = (e) => {
-    setSynopsis(e.target.value);
+    setBookData({...bookData, synopsis: e.target.value});
   };
 
   const handleOtherBooks = (e) => {
-    setOtherBooks(e.target.value);
+    setBookData({...bookData, otherBooks: e.target.value});
   };
 
   const handleNacionality = (e) => {
-    setNacionality(e.target.value);
+    setBookData({...bookData, nacionality: e.target.value});
   };
 
   return (
@@ -63,7 +46,7 @@ function Form(props) {
           name="title"
           id="title"
           placeholder="Title"
-          value={title}
+          value={bookData.title}
           onChange={handleTitle}
         />
         <input
@@ -72,7 +55,7 @@ function Form(props) {
           name="author"
           id="author"
           placeholder="Author"
-          value={author}
+          value={bookData.author}
           onChange={handleAuthor}
         />
         <div className="addForm__2col">
@@ -82,7 +65,7 @@ function Form(props) {
             name="editorial"
             id="editorial"
             placeholder="Editorial"
-            value={editorial}
+            value={bookData.editorial}
             onChange={handleEditorial}
           />
           <input
@@ -91,7 +74,7 @@ function Form(props) {
             name="review"
             id="review"
             placeholder="Book review"
-            value={reviews}
+            value={bookData.reviews}
             onChange={handleReviews}
           />
         </div>
@@ -101,7 +84,7 @@ function Form(props) {
           name="genre"
           id="genre"
           placeholder="Genre"
-          value={genre}
+          value={bookData.genre}
           onChange={handleGenre}
         />
         <textarea
@@ -111,7 +94,7 @@ function Form(props) {
           id="synopsis"
           placeholder="Synopsis"
           rows="5"
-          value={synopsis}
+          value={bookData.synopsis}
           onChange={handleSynopsis}
         ></textarea>
       </fieldset>
@@ -124,7 +107,7 @@ function Form(props) {
           name="otherBooks"
           id="otherBooks"
           placeholder="Other books"
-          value={otherBooks}
+          value={bookData.otherBooks}
           onChange={handleOtherBooks}
         />
         <input
@@ -133,7 +116,7 @@ function Form(props) {
           name="nacionality"
           id="nacionality"
           placeholder="Nacionality"
-          value={nacionality}
+          value={bookData.nacionality}
           onChange={handleNacionality}
         />
       </fieldset>

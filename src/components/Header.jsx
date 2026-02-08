@@ -1,6 +1,3 @@
-import logo from "../images/logo.jpg";
-
-
 function Header() {
   return (
     <header className="header">
@@ -16,7 +13,6 @@ function Header() {
         />
         <h1 className="header__title">My Virtual Bookshelf</h1>
       </a>
-      <img className="logoSponsor" src={logo} alt="My Bookshelf Logo" />
     </header>
   );
 }
