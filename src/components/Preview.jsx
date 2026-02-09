@@ -3,14 +3,21 @@ function Preview(props) {
 
   return (
     <section className="preview">
-      <div className="projectImage"></div>
+      <div 
+      className="projectImage"
+      style={{ backgroundImage: bookData.bookImage ? `url(${bookData.bookImage})`: "http://localhost:5173/images/ebook-example.jpg"}}
+      ></div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">Book card</span>
+                    
         </h2>
 
         <div className="card__author">
-          <div className="card__authorPhoto"></div>
+          <div className="card__authorPhoto"
+          style={{ backgroundImage: bookData.authorImage ? `url(${bookData.authorImage})`: "http://localhost:5173/images/avatar.webp"}} 
+          
+          ></div>
           <p className="card__nacionality">
             {bookData.nacionality || "Canadian"}
           </p>

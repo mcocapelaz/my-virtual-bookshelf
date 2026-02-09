@@ -15,6 +15,8 @@ function App() {
     synopsis: "",
     otherBooks: "",
     nacionality: "",
+    bookImage: "", 
+    authorImage: ""
   });
 
   return (

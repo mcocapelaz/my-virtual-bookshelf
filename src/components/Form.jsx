@@ -35,6 +35,28 @@ setBookData ({...bookData, title: e.target.value});
     setBookData({...bookData, nacionality: e.target.value});
   };
 
+  const handleBookImage= (e) => {
+    const file= e.target.files[0]; 
+    if (file) {
+      const reader=new FileReader();
+      reader.onload=()=> {
+        setBookData({...bookData, bookImage:reader.result});
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  const handleAuthorImage= (e) => {
+    const file= e.target.files[0]; 
+    if (file) {
+      const reader=new FileReader();
+      reader.onload=()=> {
+        setBookData({...bookData, authorImage:reader.result});
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   return (
     <form className="addForm">
       <h2 className="title">Information</h2>
@@ -130,6 +152,8 @@ setBookData ({...bookData, title: e.target.value});
           type="file"
           name="image"
           id="image"
+          accept="image/*"
+          onChange={handleBookImage}
         />
         <label htmlFor="photo" className="button">
           Upload author's photo
@@ -139,6 +163,8 @@ setBookData ({...bookData, title: e.target.value});
           type="file"
           name="photo"
           id="photo"
+          accept="image/*"
+          onChange={handleAuthorImage}
         />
         <button className="button--large">Save book</button>
       </fieldset>
