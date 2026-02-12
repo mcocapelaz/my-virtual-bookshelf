@@ -61,7 +61,7 @@ setBookData ({...bookData, title: e.target.value});
     <form className="addForm">
       <h2 className="title">Information</h2>
       <fieldset className="addForm__group">
-        <legend className="addForm__title">Your Virtual Bookshelf</legend>
+        <legend className="addForm__title">My Virtual Bookshelf</legend>
         <input
           className="addForm__input"
           type="text"

@@ -33,6 +33,7 @@ function App() {
         </section>
 
         <Preview bookData={bookData} />
+       
 
         <Form bookData={bookData} setBookData={setBookData} />
       </main>
