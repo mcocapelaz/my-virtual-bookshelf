@@ -87,7 +87,7 @@ setBookData ({...bookData, title: e.target.value});
         <div className="addForm__2col">
           <input
             className="addForm__input"
-            type="url"
+            type="text"
             name="editorial"
             id="editorial"
             placeholder="Editorial"
