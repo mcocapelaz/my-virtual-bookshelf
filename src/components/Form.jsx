@@ -1,5 +1,5 @@
 function Form(props) {
-  const { bookData, setBookData } = props;
+  const { bookData, setBookData, onReset } = props;
 
   //Funciones manejadoras
 
@@ -172,6 +172,9 @@ function Form(props) {
         />
         <button className="button--large" type="button" onClick={shareCard}>
           Save book
+        </button>
+        <button className="button--large" type="button" onClick={onReset}>
+          New book
         </button>
       </fieldset>
     </form>

@@ -21,7 +21,7 @@ function BookPreview() {
     if (navigator.share) {
       navigator.share({
         title: "Mira mi libro favorito",
-        url: url,
+        url: window.location.href,
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
@@ -36,7 +36,7 @@ function BookPreview() {
       <button className="button--link" onClick={shareCard}>
         Share My Card
       </button>
-      {url && <p className="card-url">{window.location.href}</p>}
+      {<p className="card-url">{window.location.href}</p>}
       <Footer />
     </div>
   );

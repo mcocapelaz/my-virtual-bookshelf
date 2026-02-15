@@ -5,33 +5,42 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Preview from "../components/Preview";
 
+const initialBookData = {
+  title: "",
+  author: "",
+  editorial: "",
+  reviews: "",
+  genre: "",
+  synopsis: "",
+  otherBooks: "",
+  nacionality: "",
+  bookImage: "",
+  authorImage: "",
+};
+
 function App() {
   const [bookData, setBookData] = useState(() => {
     const saved = localStorage.getItem("myBook");
     if (saved) {
       return JSON.parse(saved);
     }
-    return {
-      title: "",
-      author: "",
-      editorial: "",
-      reviews: "",
-      genre: "",
-      synopsis: "",
-      otherBooks: "",
-      nacionality: "",
-      bookImage: "",
-      authorImage: "",
-    };
+    return initialBookData;
   });
 
   // Guardar cuando cambien los datos
+
   useEffect(() => {
     localStorage.setItem("myBook", JSON.stringify(bookData));
   }, [bookData]);
 
   const shareCard = () => {
     window.open("/preview", "_blank");
+  };
+
+  const resetForm = () => {
+    localStorage.removeItem("myBook");
+
+    setBookData(initialBookData);
   };
 
   return (
@@ -47,10 +56,8 @@ function App() {
             Share My Card
           </button>
         </section>
-
         <Preview bookData={bookData} />
-
-        <Form bookData={bookData} setBookData={setBookData} />
+        <Form bookData={bookData} setBookData={setBookData} onReset={resetForm} />
       </main>
       <Footer />
     </div>
