@@ -1,61 +1,61 @@
 function Form(props) {
-  const {bookData, setBookData} = props;
+  const { bookData, setBookData } = props;
 
   //Funciones manejadoras
 
   const handleTitle = (e) => {
-setBookData ({...bookData, title: e.target.value}); 
+    setBookData({ ...bookData, title: e.target.value });
   };
 
- const handleAuthor = (e) => {
-    setBookData({...bookData, author: e.target.value});
+  const handleAuthor = (e) => {
+    setBookData({ ...bookData, author: e.target.value });
   };
 
   const handleEditorial = (e) => {
-    setBookData({...bookData, editorial: e.target.value});
+    setBookData({ ...bookData, editorial: e.target.value });
   };
 
   const handleReviews = (e) => {
-    setBookData({...bookData, reviews: e.target.value});
+    setBookData({ ...bookData, reviews: e.target.value });
   };
 
   const handleGenre = (e) => {
-    setBookData({...bookData, genre: e.target.value});
+    setBookData({ ...bookData, genre: e.target.value });
   };
 
   const handleSynopsis = (e) => {
-    setBookData({...bookData, synopsis: e.target.value});
+    setBookData({ ...bookData, synopsis: e.target.value });
   };
 
   const handleOtherBooks = (e) => {
-    setBookData({...bookData, otherBooks: e.target.value});
+    setBookData({ ...bookData, otherBooks: e.target.value });
   };
 
   const handleNacionality = (e) => {
-    setBookData({...bookData, nacionality: e.target.value});
+    setBookData({ ...bookData, nacionality: e.target.value });
   };
 
-  const handleBookImage= (e) => {
-    const file= e.target.files[0]; 
+  const handleBookImage = (e) => {
+    const file = e.target.files[0];
     if (file) {
-      const reader=new FileReader();
-      reader.onload=()=> {
-        setBookData({...bookData, bookImage:reader.result});
+      const reader = new FileReader();
+      reader.onload = () => {
+        setBookData({ ...bookData, bookImage: reader.result });
       };
       reader.readAsDataURL(file);
     }
-  }
+  };
 
-  const handleAuthorImage= (e) => {
-    const file= e.target.files[0]; 
+  const handleAuthorImage = (e) => {
+    const file = e.target.files[0];
     if (file) {
-      const reader=new FileReader();
-      reader.onload=()=> {
-        setBookData({...bookData, authorImage:reader.result});
+      const reader = new FileReader();
+      reader.onload = () => {
+        setBookData({ ...bookData, authorImage: reader.result });
       };
       reader.readAsDataURL(file);
     }
-  }
+  };
 
   const shareCard = () => {
     window.open("/preview", "_blank");
@@ -170,7 +170,9 @@ setBookData ({...bookData, title: e.target.value});
           accept="image/*"
           onChange={handleAuthorImage}
         />
-        <button className="button--large" type="button" onClick={shareCard}>Save book</button>
+        <button className="button--large" type="button" onClick={shareCard}>
+          Save book
+        </button>
       </fieldset>
     </form>
   );

@@ -1,24 +1,31 @@
-import bookPreviewImg from '../images/book_preview.jpg';
+import bookPreviewImg from "../images/book_preview.jpg";
 
 function Preview(props) {
   const { bookData } = props;
 
   return (
     <section className="preview">
-      <div 
-      className="projectImage"
-      style={{ backgroundImage: bookData.bookImage ? `url(${bookData.bookImage})`: `url(${bookPreviewImg})`}}
+      <div
+        className="projectImage"
+        style={{
+          backgroundImage: bookData.bookImage
+            ? `url(${bookData.bookImage})`
+            : `url(${bookPreviewImg})`,
+        }}
       ></div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">Book card</span>
-                    
         </h2>
 
         <div className="card__author">
-          <div className="card__authorPhoto"
-          style={{ backgroundImage: bookData.authorImage ? `url(${bookData.authorImage})`: "http://localhost:5173/images/book_preview.jpg"}} 
-          
+          <div
+            className="card__authorPhoto"
+            style={{
+              backgroundImage: bookData.authorImage
+                ? `url(${bookData.authorImage})`
+                : "http://localhost:5173/images/book_preview.jpg",
+            }}
           ></div>
           <p className="card__nacionality">
             {bookData.nacionality || "Canadian"}

@@ -6,23 +6,14 @@ import "../styles/App.scss";
 
 function BookPreview() {
   const [bookData, setBookData] = useState({});
-  const [url, setUrl] = useState("");
+  
 
   useEffect(() => {
     const saved = localStorage.getItem("myBook");
     if (saved) {
       setBookData(JSON.parse(saved));
     }
-    setUrl(window.location.href);
-  }, []);
-
-  // Guardar libro en localStorage
-
-  useEffect(() => {
-    if (Object.keys(bookData).length > 0) {
-      localStorage.setItem("myBook", JSON.stringify(bookData));
-    }
-  }, [bookData]);
+}, []);
 
   //Compartir tarjeta
 
@@ -36,7 +27,6 @@ function BookPreview() {
       navigator.clipboard.writeText(window.location.href);
       alert("Enlace copiado al portapapeles");
     }
-   
   };
 
   return (
@@ -46,7 +36,7 @@ function BookPreview() {
       <button className="button--link" onClick={shareCard}>
         Share My Card
       </button>
-      {url && <p className="card-url">{url}</p>}
+      {url && <p className="card-url">{window.location.href}</p>}
       <Footer />
     </div>
   );

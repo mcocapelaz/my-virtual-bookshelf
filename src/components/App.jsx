@@ -5,34 +5,30 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Preview from "../components/Preview";
 
-
-
 function App() {
-  const [bookData, setBookData] = useState({
-    title: "",
-    author: "",
-    editorial: "",
-    reviews: "",
-    genre: "",
-    synopsis: "",
-    otherBooks: "",
-    nacionality: "",
-    bookImage: "",
-    authorImage: "",
+  const [bookData, setBookData] = useState(() => {
+    const saved = localStorage.getItem("myBook");
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return {
+      title: "",
+      author: "",
+      editorial: "",
+      reviews: "",
+      genre: "",
+      synopsis: "",
+      otherBooks: "",
+      nacionality: "",
+      bookImage: "",
+      authorImage: "",
+    };
   });
 
-  // Guardar automáticamente cuando cambien los datos
+  // Guardar cuando cambien los datos
   useEffect(() => {
     localStorage.setItem("myBook", JSON.stringify(bookData));
   }, [bookData]);
-
-  // Cargar datos al iniciar
-  useEffect(() => {
-    const saved = localStorage.getItem("myBook");
-    if (saved) {
-      setBookData(JSON.parse(saved));
-    }
-  }, []);
 
   const shareCard = () => {
     window.open("/preview", "_blank");
