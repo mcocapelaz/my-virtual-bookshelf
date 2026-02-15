@@ -57,6 +57,10 @@ setBookData ({...bookData, title: e.target.value});
     }
   }
 
+  const shareCard = () => {
+    window.open("/preview", "_blank");
+  };
+
   return (
     <form className="addForm">
       <h2 className="title">Information</h2>
@@ -166,7 +170,7 @@ setBookData ({...bookData, title: e.target.value});
           accept="image/*"
           onChange={handleAuthorImage}
         />
-        <button className="button--large">Save book</button>
+        <button className="button--large" type="button" onClick={shareCard}>Save book</button>
       </fieldset>
     </form>
   );
