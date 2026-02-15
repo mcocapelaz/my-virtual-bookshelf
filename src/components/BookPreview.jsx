@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Preview from "../components/Preview";
-import Header from "./Header"; 
-import Footer from "./Footer"; 
+import Header from "./Header";
+import Footer from "./Footer";
 import "../styles/App.scss";
 
 function BookPreview() {
   const [bookData, setBookData] = useState({});
-  const [url, setUrl] = useState("false");
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
     const saved = localStorage.getItem("myBook");
@@ -16,24 +16,32 @@ function BookPreview() {
     setUrl(window.location.href);
   }, []);
 
+  // Guardar libro en localStorage
+
+  useEffect(() => {
+    if (Object.keys(bookData).length > 0) {
+      localStorage.setItem("myBook", JSON.stringify(bookData));
+    }
+  }, [bookData]);
+
   //Compartir tarjeta
 
   const shareCard = () => {
     if (navigator.share) {
       navigator.share({
         title: "Mira mi libro favorito",
-        url: window.location.href,
+        url: url,
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
       alert("Enlace copiado al portapapeles");
     }
-    setUrl(true); 
+   
   };
 
   return (
     <div className="container">
-        <Header />
+      <Header />
       <Preview bookData={bookData} />
       <button className="button--link" onClick={shareCard}>
         Share My Card
