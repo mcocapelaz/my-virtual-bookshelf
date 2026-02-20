@@ -1,0 +1,13 @@
+{
+    "Servers": {
+        "1": {
+            "Name": "VIRTUAL_BOOKSHELF",
+            "Group": "BOOKS_TEST",
+            "Host": "pg-3f10f81f-mcocapelaz.b.aivencloud.com",
+            "Port": 16859,
+            "MaintenanceDB": "defaultdb",           
+            "Username": "avnadmin",
+            "SSLMode": "require"
+        }
+    }
+}
