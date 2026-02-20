@@ -3,6 +3,19 @@ import pool from "../db/database.js";
 
 const router = express.Router();
 
+//Last 5 books 
+
+router.get("/latest/5", async (req,res)=> {
+  try {
+    const result=await pool.query( 
+      "SELECT * FROM libros ORDER BY created_at DESC LIMIT 5"
+    );
+    res.json(result.rows);     
+  } catch (error) {
+    res.status(500).json({error: error.message});
+  }
+}); 
+
 // Create a book
 router.post("/", async (req, res) => {
   try {

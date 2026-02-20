@@ -1,71 +1,72 @@
+import { useNavigate } from "react-router-dom";
+import React from "react";
+
 function Form(props) {
   const { bookData, setBookData, onReset } = props;
+  const navigate = useNavigate();
 
-  //Funciones manejadoras
-
-  const handleTitle = (e) => {
-    setBookData({ ...bookData, title: e.target.value });
-  };
-
-  const handleAuthor = (e) => {
-    setBookData({ ...bookData, author: e.target.value });
-  };
-
-  const handleEditorial = (e) => {
-    setBookData({ ...bookData, editorial: e.target.value });
-  };
-
-  const handleReviews = (e) => {
-    setBookData({ ...bookData, reviews: e.target.value });
-  };
-
-  const handleGenre = (e) => {
-    setBookData({ ...bookData, genre: e.target.value });
-  };
-
-  const handleSynopsis = (e) => {
-    setBookData({ ...bookData, synopsis: e.target.value });
-  };
-
-  const handleOtherBooks = (e) => {
-    setBookData({ ...bookData, otherBooks: e.target.value });
-  };
-
-  const handleNacionality = (e) => {
-    setBookData({ ...bookData, nacionality: e.target.value });
+  const handleChange = (key) => (e) => {
+    setBookData({ ...bookData, [key]: e.target.value });
   };
 
   const handleBookImage = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setBookData({ ...bookData, bookImage: reader.result });
-      };
-      reader.readAsDataURL(file);
-    }
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setBookData({ ...bookData, bookImage: reader.result });
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleAuthorImage = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setBookData({ ...bookData, authorImage: reader.result });
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setBookData({ ...bookData, authorImage: reader.result });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleSave = async () => {
+    try {
+      const payload = {
+        title: bookData.title,
+        author: bookData.author,
+        editorial: bookData.editorial,
+        reviews: bookData.reviews,
+        genre: bookData.genre,
+        synopsis: bookData.synopsis,
+        nacionality: bookData.nacionality
       };
-      reader.readAsDataURL(file);
+
+      const response = await fetch("http://localhost:4000/api/libros", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) throw new Error("Request failed");
+
+      const savedBook = await response.json();
+
+      navigate(`/preview/${savedBook.id}`);
+    } catch (error) {
+      console.error(error);
+      alert("Could not save the book. Make sure the backend is running.");
     }
   };
 
-  const shareCard = () => {
-    window.open("/preview", "_blank");
-  };
-
   return (
-    <form className="addForm">
+    <form className="addForm" onSubmit={(e) => e.preventDefault()}>
       <h2 className="title">Information</h2>
+
       <fieldset className="addForm__group">
         <legend className="addForm__title">My Virtual Bookshelf</legend>
+
         <input
           className="addForm__input"
           type="text"
@@ -73,8 +74,9 @@ function Form(props) {
           id="title"
           placeholder="Title"
           value={bookData.title}
-          onChange={handleTitle}
+          onChange={handleChange("title")}
         />
+
         <input
           className="addForm__input"
           type="text"
@@ -82,8 +84,9 @@ function Form(props) {
           id="author"
           placeholder="Author"
           value={bookData.author}
-          onChange={handleAuthor}
+          onChange={handleChange("author")}
         />
+
         <div className="addForm__2col">
           <input
             className="addForm__input"
@@ -92,18 +95,20 @@ function Form(props) {
             id="editorial"
             placeholder="Editorial"
             value={bookData.editorial}
-            onChange={handleEditorial}
+            onChange={handleChange("editorial")}
           />
+
           <input
             className="addForm__input"
             type="text"
-            name="review"
-            id="review"
+            name="reviews"
+            id="reviews"
             placeholder="Book review"
             value={bookData.reviews}
-            onChange={handleReviews}
+            onChange={handleChange("reviews")}
           />
         </div>
+
         <input
           className="addForm__input"
           type="text"
@@ -111,31 +116,33 @@ function Form(props) {
           id="genre"
           placeholder="Genre"
           value={bookData.genre}
-          onChange={handleGenre}
+          onChange={handleChange("genre")}
         />
+
         <textarea
           className="addForm__input"
-          type="text"
           name="synopsis"
           id="synopsis"
           placeholder="Synopsis"
           rows="5"
           value={bookData.synopsis}
-          onChange={handleSynopsis}
-        ></textarea>
+          onChange={handleChange("synopsis")}
+        />
       </fieldset>
 
       <fieldset className="addForm__group">
         <legend className="addForm__title">Author information</legend>
+
         <input
           className="addForm__input"
           type="text"
           name="otherBooks"
           id="otherBooks"
-          placeholder="Other books"
+          placeholder="Other books (not saved yet)"
           value={bookData.otherBooks}
-          onChange={handleOtherBooks}
+          onChange={handleChange("otherBooks")}
         />
+
         <input
           className="addForm__input"
           type="text"
@@ -143,13 +150,13 @@ function Form(props) {
           id="nacionality"
           placeholder="Nacionality"
           value={bookData.nacionality}
-          onChange={handleNacionality}
+          onChange={handleChange("nacionality")}
         />
       </fieldset>
 
       <fieldset className="addForm__group--upload">
         <label htmlFor="image" className="button">
-          Upload photo of the book
+          Upload photo of the book (not saved yet)
         </label>
         <input
           className="addForm__hidden"
@@ -159,8 +166,9 @@ function Form(props) {
           accept="image/*"
           onChange={handleBookImage}
         />
+
         <label htmlFor="photo" className="button">
-          Upload author's photo
+          Upload author's photo (not saved yet)
         </label>
         <input
           className="addForm__hidden"
@@ -170,9 +178,11 @@ function Form(props) {
           accept="image/*"
           onChange={handleAuthorImage}
         />
-        <button className="button--large" type="button" onClick={shareCard}>
+
+        <button className="button--large" type="button" onClick={handleSave}>
           Save book
         </button>
+
         <button className="button--large" type="button" onClick={onReset}>
           New book
         </button>

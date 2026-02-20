@@ -1,27 +1,31 @@
 import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import Preview from "../components/Preview";
 import Header from "./Header";
 import Footer from "./Footer";
 import "../styles/App.scss";
+import React from "react";
 
 function BookPreview() {
-  const [bookData, setBookData] = useState({});
-  
+  const { id } = useParams();
+  const [bookData, setBookData] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const saved = localStorage.getItem("myBook");
-    if (saved) {
-      setBookData(JSON.parse(saved));
-    }
-}, []);
-
-  //Compartir tarjeta
+    fetch(`http://localhost:4000/api/libros/${id}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Not found");
+        return res.json();
+      })
+      .then(setBookData)
+      .catch(() => setError("Book not found"));
+  }, [id]);
 
   const shareCard = () => {
     if (navigator.share) {
       navigator.share({
         title: "Mira mi libro favorito",
-        url: window.location.href,
+        url: window.location.href
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
@@ -29,15 +33,36 @@ function BookPreview() {
     }
   };
 
+  if (error) {
+    return (
+      <div className="container">
+        <Header />
+        <p>{error}</p>
+        <Link to="/">Back to Home</Link>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (!bookData) {
+    return (
+      <div className="container">
+       
+        <p>Loading...</p>
+       
+      </div>
+    );
+  }
+
   return (
     <div className="container">
-      <Header />
+     
       <Preview bookData={bookData} />
       <button className="button--link" onClick={shareCard}>
         Share My Card
       </button>
-      {<p className="card-url">{window.location.href}</p>}
-      <Footer />
+      <p className="card-url">{window.location.href}</p>
+      
     </div>
   );
 }

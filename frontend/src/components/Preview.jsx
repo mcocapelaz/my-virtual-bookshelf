@@ -1,7 +1,9 @@
 import bookPreviewImg from "../images/book_preview.jpg";
+import React from "react";
 
 function Preview(props) {
   const { bookData } = props;
+ 
 
   return (
     <section className="preview">
@@ -9,11 +11,13 @@ function Preview(props) {
         className="projectImage"
         style={{
           backgroundImage: bookData.bookImage
-            ? `url(${bookData.bookImage})`
-            : `url(${bookPreviewImg})`,
+          ? `url("${bookData.bookImage}")`
+          : `url("${bookPreviewImg}")`,        
         }}
       ></div>
       <article className="card">
+      
+
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">Book card</span>
         </h2>
@@ -23,8 +27,9 @@ function Preview(props) {
             className="card__authorPhoto"
             style={{
               backgroundImage: bookData.authorImage
-                ? `url(${bookData.authorImage})`
-                : "http://localhost:5173/images/book_preview.jpg",
+  ? `url("${bookData.authorImage}")`
+  : `url("${bookPreviewImg}")`,
+
             }}
           ></div>
           <p className="card__nacionality">
