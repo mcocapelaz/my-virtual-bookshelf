@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
-import books from "./routes/books";
+import books from "./routes/books.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 const PORT = 4000;
