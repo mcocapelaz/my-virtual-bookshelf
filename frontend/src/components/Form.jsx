@@ -40,13 +40,15 @@ function Form(props) {
         reviews: bookData.reviews,
         genre: bookData.genre,
         synopsis: bookData.synopsis,
-        nacionality: bookData.nacionality
+        nacionality: bookData.nacionality,
+        bookImage: bookData.bookImage,
+        authorImage: bookData.authorImage,
       };
 
       const response = await fetch("http://localhost:4000/api/libros", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) throw new Error("Request failed");

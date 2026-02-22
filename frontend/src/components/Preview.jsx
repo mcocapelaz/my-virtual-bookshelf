@@ -3,21 +3,18 @@ import React from "react";
 
 function Preview(props) {
   const { bookData } = props;
- 
 
   return (
     <section className="preview">
       <div
         className="projectImage"
         style={{
-          backgroundImage: bookData.bookImage
-          ? `url("${bookData.bookImage}")`
-          : `url("${bookPreviewImg}")`,        
+          backgroundImage: (bookData.book_image || bookData.bookImage)
+          ? `url(${bookData.book_image || bookData.bookImage})`
+          : `url(${bookPreviewImg})`,
         }}
       ></div>
       <article className="card">
-      
-
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">Book card</span>
         </h2>
@@ -26,10 +23,9 @@ function Preview(props) {
           <div
             className="card__authorPhoto"
             style={{
-              backgroundImage: bookData.authorImage
-  ? `url("${bookData.authorImage}")`
-  : `url("${bookPreviewImg}")`,
-
+              backgroundImage: (bookData.author_image || bookData.authorImage)
+              ? `url(${bookData.author_image || bookData.authorImage})`
+              : `url(${bookPreviewImg})`,
             }}
           ></div>
           <p className="card__nacionality">
