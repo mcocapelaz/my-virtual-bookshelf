@@ -18,13 +18,16 @@ const initialBookData = {
 };
 
 function App() {
-  const [bookData, setBookData] = useState(() => {
+  const [bookData, setBookData] = useState((initialBookData) => {
     const saved = localStorage.getItem("myBook");
     return saved ? JSON.parse(saved) : initialBookData;
   });
 
   useEffect(() => {
-    localStorage.setItem("myBook", JSON.stringify(bookData));
+    sessionStorage.removeItem("myBook"); 
+  }, []);
+  useEffect(() => {
+    sessionStorage.setItem("myBook", JSON.stringify(bookData));
   }, [bookData]);
 
   const shareCard = () => {

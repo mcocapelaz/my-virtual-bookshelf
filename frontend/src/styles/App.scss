@@ -39,7 +39,7 @@ fieldset {
 }
 
 :root {
-  font: var(--font-normal); /* font-size: 10px; */
+  font: var(--font-normal);
   color: var(--color-white);
 }
 
@@ -124,7 +124,7 @@ fieldset {
 
 .preview .projectImage {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   outline: solid 1px pink;
 
   background-image: url("../images/ebook-example.jpg");
@@ -396,11 +396,6 @@ fieldset {
   border-image-slice: 1;
   border-radius: 20px;
   background-color: var(--color-dark-lilac);
-  /*
-  background-image: linear-gradient(to bottom, var(--color-dark-lilac), var(--color-dark-lilac)), linear-gradient(to bottom, #2a2a2a 0%, rgba(0, 0, 0, 0));
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  */
 }
 
 .button {
@@ -471,4 +466,43 @@ fieldset {
 
 .icon__github {
   background-image: url("../images/icons/github.svg");
+}
+
+/* HOME */
+
+.bookList {
+  display: flex;  
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center; 
+  
+}
+
+.bookList .preview {
+  width: 35rem;
+  transform: scale(0.90); 
+  margin-bottom: -75px;  
+  
+}
+
+@media screen and (min-width: 768px) {
+  .bookList {
+    flex-direction: row;      /* 👈 Fila en desktop */
+    align-items: flex-start;  /* 👈 Alinea las tarjetas por arriba */
+    flex-wrap: wrap;          /* 👈 Si no caben, bajan a la siguiente línea */
+  }
+
+  .bookList .preview {
+    width: 30rem;  /* 👈 Más pequeñas para que quepan varias en fila */
+  }
+
+  .home__cta {
+    grid-column: span 2;
+  }
+
+  .bookList {
+    grid-column: span 2;
+  }
 }

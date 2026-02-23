@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import React from "react";
+import Preview from "./Preview";
 
 function Home() {
   const [books, setBooks] = useState([]);
@@ -25,29 +26,17 @@ function Home() {
         {error && <p>{error}</p>}
       </section>
 
-      <section className="preview">
-        <div className="projectImage" />
+      <div className="bookList">
+        {books.map((book) => (
+          <Preview key={book.id} bookData={book} />
+        ))}
+      </div>
 
-        <div className="card">
-          <h3 className="card__projectTitle">
-            <span className="card__projectTitle--text">Books</span>
-          </h3>
-
-          <ul className="card__project">
-            {books.map((b) => (
-              <li key={b.id} className="card-url">
-                <Link to={`/preview/${b.id}`}>
-                  <strong>{b.title}</strong> - {b.author}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
+      <div className="home__cta">
         <Link className="button--link" to="/create">
           Create book card
         </Link>
-      </section>
+      </div>
     </>
   );
 }
