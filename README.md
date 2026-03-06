@@ -5,7 +5,7 @@ Built with React and Express, this project allows users to create, view, update,
 
 ---
 
-## 🎯 Features
+## Features
 
 * **Book Management**: Add, view, update, and delete books from your collection
 * **Responsive Design**: Clean and intuitive user interface built with React
@@ -15,8 +15,17 @@ Built with React and Express, this project allows users to create, view, update,
 * **Development Tools**: ESLint for code quality and Vite for fast development
 
 ---
+## What I learned
 
-## 🛠️ Tech Stack
+* Designing a **full-stack architecture** with separate frontend and backend layers
+* Building **reusable React components**
+* Creating **RESTful APIs with Express**
+* Integrating **PostgreSQL** for persistent data storage
+* Managing development workflows with **Vite and ESLint**
+
+---
+
+## Tech Stack
 
 ### Frontend
 
